@@ -1,0 +1,19 @@
+{
+  "name": "quizzical-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "massive": "^6.3.0"
+  }
+}
