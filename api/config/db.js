@@ -14,7 +14,7 @@ async function connect() {
     try {
         _db = await massive(config);
         console.log(`[massive] connected to ${config.database} on ${config.host}:${config.port}`);
-        console.log(_db.listFunctions())
+        console.log(_db.listTables())
 
         return _db;
     } catch (err) {
