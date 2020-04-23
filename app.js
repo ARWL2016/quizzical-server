@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const chalk = require('chalk');
 const cors = require('cors');
@@ -21,7 +23,11 @@ async function start() {
     const db = await connect();
 
     if (db) {
-        app.listen(port, () => console.log(chalk.green(`[server] listening on port: http://localhost:${port}`)));
+        app.listen(port, () => {
+            console.log(chalk.green(`[quizzical-server] listening on port: http://localhost:${port}`));
+            console.log(chalk.green(`[quizzical-server] running in ${process.env.ENVIRONMENT} environment`));
+        });
+
     }
 }
 
