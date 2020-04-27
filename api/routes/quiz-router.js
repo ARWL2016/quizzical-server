@@ -3,6 +3,7 @@ const { getAll, getQuizById, getQuizQuestions } = require('../controllers/quiz-c
 
 const quizRouter = express.Router();
 
+// parent route: '/quiz' +
 
 quizRouter.get('/', getAll);
 quizRouter.get('/:id', getQuizById);

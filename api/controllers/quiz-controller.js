@@ -24,7 +24,7 @@ const getQuizById = async(req, res) => {
 
     try {
         const quiz = await db.quiz.find({
-            id: req.params.id
+            quiz_id: req.params.id
         });
         jsend.send(res, {quiz: quiz[0]});
     } catch (err) {
@@ -40,7 +40,7 @@ const getQuizQuestions = async(req, res) => {
     try {
         const [quiz, questions] = await Promise.all([
             db.quiz.findOne({
-                id: quiz_id
+                quiz_id: quiz_id
             }),
             db.scripts.getQuestions({quiz_id})
         ]);

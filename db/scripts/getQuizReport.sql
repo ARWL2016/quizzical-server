@@ -1,26 +1,32 @@
 WITH result_header AS (
 	SELECT
-		a.id AS attempt_id,
-		a.quiz_id,
-		a.user_id,
-		datetime,
+		att.attempt_id,
+		att.quiz_id,
+		att.user_id,
+		created_at,
 		qz.title AS quiz_title
-	FROM attempt a
+	FROM attempt att
 
-	INNER JOIN quiz qz ON a.quiz_id = qz.id
-	WHERE a.id = ${attempt_id}
+	INNER JOIN quiz qz ON att.quiz_id = qz.quiz_id
+	WHERE att.attempt_id = ${attempt_id}
 ), results AS (
+
 	SELECT
-		att.question_id,
-		att.answer,
-		ans.text AS correct_answer,
-		CASE WHEN att.answer = ans.text THEN true
+		os.question_id,
+		qs.text,
+		opt1.text AS option_selected,
+		opt2.text AS correct_option,
+		CASE WHEN opt1.text = opt2.text THEN true
 			 ELSE false
 		 END AS result
-	FROM attempt_answer att
-	INNER JOIN answer ans ON ans.question_id = att.question_id
-	WHERE att.attempt_id = ${attempt_id}
-	AND ans.is_correct = true
+	FROM option_selected os
+	INNER JOIN option opt1 ON opt1.option_id = os.option_id
+	INNER JOIN option opt2 ON opt2.question_id = os.question_id
+ 	INNER JOIN question qs ON qs.question_id = os.question_id
+
+	WHERE os.attempt_id = ${attempt_id}
+	AND opt2.is_correct = true
+
 ), num_questions AS (
 	SELECT
 		count(*) AS num_questions
