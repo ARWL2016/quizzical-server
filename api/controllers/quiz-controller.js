@@ -51,7 +51,21 @@ const getQuizQuestions = async(req, res) => {
     }
 }
 
+const postQuiz = async(req, res) => {
+    const db = getInstance();
+    const jsend = new JSend();
+
+    try {
+
+
+
+        jsend.send(res, {body: req.body});
+    } catch (err) {
+        jsend.error(res, err);
+    }
+}
+
 
 module.exports = {
-    getAll, getQuizById, getQuizQuestions
+    getAll, getQuizById, getQuizQuestions, postQuiz
 }
