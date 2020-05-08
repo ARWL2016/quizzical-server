@@ -16,7 +16,7 @@ app.use(cors({
 
 setRoutes(app);
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 
 async function start() {
