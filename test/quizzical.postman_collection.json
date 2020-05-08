@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "038ef8a4-1e8c-42bd-8a53-5e84ab1d4a94",
+		"name": "quizzical",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list quizzes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/quiz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quiz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/quiz/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quiz questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/quiz/4/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"quiz",
+						"4",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/attempt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"quiz_id\": 4, \n\t\"user_id\": 7,\n\t\"answers\": {\n\t\t\"1\": \"Paris\",\n\t\t\"2\": \"Bonn\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/attempt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"attempt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/quiz",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"quizTitle\": \"Geography\",\n    \"questions\": [\n        {\n            \"number\": 1,\n            \"text\": \"Highest mountain\",\n            \"correctAnswer\": \"Everest\",\n            \"options\": [\n                \"Kilamanjaro\",\n                \"Mount Doom\",\n                \"Eiger\"\n            ]\n        },\n        {\n            \"number\": 2,\n            \"text\": \"River\",\n            \"correctAnswer\": \"Nile\",\n            \"options\": [\n                \"Amazon\",\n                \"Ganges\",\n                \"Thames\"\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/quiz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
